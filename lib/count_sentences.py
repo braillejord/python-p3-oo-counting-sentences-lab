@@ -2,7 +2,7 @@
 
 
 class MyString:
-    def __init__(self, value=" "):
+    def __init__(self, value=""):
         self.value = value
 
     def get_value(self):
@@ -18,3 +18,18 @@ class MyString:
 
     def is_sentence(self):
         return True if self.value.endswith(".") else False
+
+    def is_question(self):
+        return True if self.value.endswith("?") else False
+
+    def is_exclamation(self):
+        return True if self.value.endswith("!") else False
+
+    def count_sentences(self):
+        value = self.value.replace("?", ".")
+        value = value.replace("!", ".")
+
+        sentences = value.split(".")
+        sentences = [s for s in sentences if len(s) > 0]
+
+        return len(sentences)
